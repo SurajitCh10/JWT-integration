@@ -68,6 +68,9 @@ router.post("/login", async (req, res) => {
       //  sign unique field with jwt
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
       res.header("auth-token", token).send(token);
+      user.token = token;
+
+      await user.save();
     }
   } catch (error) {
     res.status(500).send(error);

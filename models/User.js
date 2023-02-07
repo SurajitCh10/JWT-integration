@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   fname: {
     type: String,
-    required: true,
+    //required: true,
     min: 6,
     max: 255,
   },
@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  token: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);
